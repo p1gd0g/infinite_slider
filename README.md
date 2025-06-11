@@ -27,3 +27,7 @@ A simple infinite slider widget.
 ```dart
 InfiniteSliderV1(InfiniteSliderData(5))
 ```
+
+## Publish
+
+Fix `$env:PUB_HOSTED_URL="https://pub.dev"` first, then publish.
