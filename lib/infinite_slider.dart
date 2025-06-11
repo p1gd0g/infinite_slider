@@ -33,6 +33,12 @@ class InfiniteSliderData {
   int current() {
     return (sliderValue.value * (max() - min()) + min()).round();
   }
+
+  InfiniteSliderV1? widget;
+  InfiniteSliderV1? getWidget() {
+    widget ??= InfiniteSliderV1(this);
+    return widget;
+  }
 }
 
 class InfiniteSliderV1 extends StatelessWidget {
