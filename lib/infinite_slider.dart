@@ -31,7 +31,7 @@ class InfiniteSliderData {
   }
 
   int current() {
-    return (sliderValue.value * (max() - min()) + min()).round();
+    return (sliderValue.value * (max() - min()) + min()).toInt();
   }
 
   InfiniteSliderV1? widget;

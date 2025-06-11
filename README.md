@@ -15,7 +15,7 @@ A simple infinite slider widget.
 
 ## Features
 
-![](http://md.p1gd0g.cc/mmbiz_gif/OQRlA7Uf7SXvzRlibNyDrfvTiagsyiceGFA0Sriah80jEZUU0ia5fNIiau8lM2vRqibphcTiaN7vzFWaSK953Br3ZCHNXg/0?wx_fmt=gif)
+![](https://md.p1gd0g.cc/mmbiz_gif/OQRlA7Uf7SXvzRlibNyDrfvTiagsyiceGFA0Sriah80jEZUU0ia5fNIiau8lM2vRqibphcTiaN7vzFWaSK953Br3ZCHNXg/0?wx_fmt=gif)
 
 ## Getting started
 
