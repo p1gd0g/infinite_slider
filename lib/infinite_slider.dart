@@ -4,22 +4,34 @@ import 'package:get/get.dart';
 class InfiniteSliderData {
   InfiniteSliderData(this.value);
 
-  double value;
+  int value;
   var sliderValue = 0.5.obs;
 
-  double min() {
-    return value * 0.3;
+  int min() {
+    if (value <= 0) {
+      return 0;
+    }
+
+    var min = (value * 0.3).round();
+    if (min == value) {
+      min = value - 1;
+    }
+    return min;
   }
 
-  double max() {
+  int max() {
     if (value <= 0) {
       return 1;
     }
-    return value * 1.7;
+    var max = (value * 1.7).round();
+    if (max == value) {
+      max = value + 1;
+    }
+    return max;
   }
 
-  double current() {
-    return sliderValue.value * (max() - min()) + min();
+  int current() {
+    return (sliderValue.value * (max() - min()) + min()).round();
   }
 }
 
@@ -36,30 +48,35 @@ class InfiniteSliderV1 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(titleFormater?.call(data.current().round().toString()) ??
-                data.current().round().toString()),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(data.min().round().toString()),
-              ),
-              Expanded(
-                child: Slider(
-                  onChanged: (value) {
-                    data.sliderValue.value = value;
-                  },
-                  onChangeEnd: (value) {
-                    data.value = data.current().round().toDouble();
-                    data.sliderValue.value = 0.5;
-                  },
-                  value: data.sliderValue.value,
+            Text(
+              titleFormater?.call(data.current().toString()) ??
+                  data.current().toString(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(data.min().toString()),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(data.max().round().toString()),
-              ),
-            ]),
+                Expanded(
+                  child: Slider(
+                    onChanged: (value) {
+                      data.sliderValue.value = value;
+                    },
+                    onChangeEnd: (value) {
+                      data.value = data.current();
+                      data.sliderValue.value = 0.5;
+                    },
+                    value: data.sliderValue.value,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(data.max().toString()),
+                ),
+              ],
+            ),
           ],
         ),
       ),
